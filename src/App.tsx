@@ -22,6 +22,10 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="text-amber-400 text-3xl font-bold underline">
+        Hello world!
+      </h1>
+      <div className="bg-amber-200 w-10 h-20" />
       <Space wrap>
         <Button type="primary">Primary Button</Button>
         <Button>Default Button</Button>
