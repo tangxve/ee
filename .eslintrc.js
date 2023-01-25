@@ -31,13 +31,15 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     '@antfu',
   ],
-  plugins: ['simple-import-sort', 'import'],
+  plugins: [
+    'simple-import-sort',
+    'import'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/accessible-emoji': 'off',
     'react/prop-types': 'off',
     'arrow-parens': 'off',
-    'simple-import-sort/imports': 'error',
+    // 'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
   },
 }
