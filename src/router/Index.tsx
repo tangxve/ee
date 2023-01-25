@@ -1,16 +1,15 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter,Navigate } from 'react-router-dom'
 
-import Editor, { editorLoader } from '../views/Editor'
+import Editor from '../views/Editor'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: <Navigate to="/editor" />,
     children: [
       {
-        path: 'team',
+        path: 'editor',
         element: <Editor />,
-        loader: editorLoader,
       },
     ],
   },
