@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
     './src/pages/**/*.tsx',
@@ -7,6 +7,7 @@ module.exports = {
     './src/**/*',
     './index.html',
   ],
+  important: true,
   theme: {
     extend: {},
   },

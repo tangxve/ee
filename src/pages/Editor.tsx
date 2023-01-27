@@ -1,16 +1,8 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Button, Layout, Space, Typography } from 'antd'
 
 const { Header, Sider, Content } = Layout
-
-const headerStyle: React.CSSProperties = {
-  textAlign: 'center',
-  color: '#fff',
-  height: 64,
-  paddingInline: 50,
-  lineHeight: '64px',
-  backgroundColor: '#7dbcea',
-}
+const { Title } = Typography
 
 const contentStyle: React.CSSProperties = {
   textAlign: 'center',
@@ -31,11 +23,23 @@ export default function Editor() {
   return (
     <div className="h-screen">
       <Layout className="h-screen">
-        <Header style={headerStyle}>Header</Header>
+        <Header className="bg-white">
+          <Space className="flex justify-between" align="center">
+            <Space>
+              <Title className="m-0" level={3}>Email Editor</Title>
+            </Space>
+          <Space>
+            <Button>Export MJML</Button>
+            <Button>Export MJML</Button>
+            <Button>Send test email</Button>
+            <Button type="primary">Export MJML</Button>
+          </Space>
+          </Space>
+        </Header>
         <Layout>
-          <Sider style={siderStyle}>Sider</Sider>
+          <Sider width="302" style={siderStyle}>Sider</Sider>
           <Content style={contentStyle}>Content</Content>
-          <Sider style={siderStyle}>Sider</Sider>
+          <Sider width="302" style={siderStyle}>Sider</Sider>
         </Layout>
       </Layout>
     </div>
