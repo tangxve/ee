@@ -1,23 +1,9 @@
 import React from 'react'
 import { Button, Layout, Space, Typography } from 'antd'
+import WidgetPanel from '../components/WidgetPanel'
 
 const { Header, Sider, Content } = Layout
 const { Title } = Typography
-
-const contentStyle: React.CSSProperties = {
-  textAlign: 'center',
-  minHeight: 120,
-  lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#108ee9',
-}
-
-const siderStyle: React.CSSProperties = {
-  textAlign: 'center',
-  lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#3ba0e9',
-}
 
 export default function Editor() {
   return (
@@ -28,18 +14,20 @@ export default function Editor() {
             <Space>
               <Title className="m-0" level={3}>Email Editor</Title>
             </Space>
-          <Space>
-            <Button>Export MJML</Button>
-            <Button>Export MJML</Button>
-            <Button>Send test email</Button>
-            <Button type="primary">Export MJML</Button>
-          </Space>
+            <Space>
+              <Button>Export MJML</Button>
+              <Button>Export MJML</Button>
+              <Button>Send test email</Button>
+              <Button type="primary">Export MJML</Button>
+            </Space>
           </Space>
         </Header>
         <Layout>
-          <Sider width="302" style={siderStyle}>Sider</Sider>
-          <Content style={contentStyle}>Content</Content>
-          <Sider width="302" style={siderStyle}>Sider</Sider>
+          <Sider width="302" className='bg-white'>
+            <WidgetPanel />
+          </Sider>
+          <Content>Content</Content>
+          <Sider width="302">Sider</Sider>
         </Layout>
       </Layout>
     </div>
