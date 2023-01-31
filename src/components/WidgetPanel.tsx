@@ -1,34 +1,28 @@
 import { Collapse } from 'antd'
 import React from 'react'
+import styles from './WidgetPanel.module.scss'
 
 const { Panel } = Collapse
 
-export function BasicWidget() {
+function BasicWidget() {
   return (
-    <div className="select-none">
-      <div className="pt-2">label</div>
-      <div className="mt-2 w-full"></div>
+    <div className={styles.blockItem}>
+      <div className={styles.blockItemContainer}>
+        <span className="bloc-title"> BasicWidget </span>
+      </div>
     </div>
   )
 }
 
-// const containerStyle: React.CSSProperties = {
-//   boxShadow: 'rgb(55 63 71 / 4%) 0px 0px 0px 1px, rgb(55 63 71 / 8%) 0px 4px 4px 0px, rgb(55 63 71 / 8%) 0px 8px 24px 0px',
-//   hover: {
-//     boxShadow: '0px 0px 2px 2px rgb(123, 192, 252)',
-//   },
-// }
-
-export function ContainerWidget() {
-  const colItems = [1, 2, 3, 4].map(v =>
-    <div key={v} className="flex-auto text-center border-0 border-r border-solid last:border-r-0">{v}</div>,
-  )
+function ContainerWidget() {
   return (
-    <div className="select-none mb-2">
-      <div className="pt-2">column_7b7361c7</div>
-      <div className="mt-2 p-2 w-full shadow rounded border hover:lg hover:shadow-blue-500/40">
-        <div className="h-5 leading-5 flex border rounded  border-zinc-600 border-solid">
-          {colItems}
+    <div className={styles.layoutItem}>
+      <div className={styles.layoutLabel}>
+        11 列 columns
+      </div>
+      <div className={styles.layoutItemContainer}>
+        <div className={styles.layoutItemContent}>
+          <div className={styles.col}>111</div>
         </div>
       </div>
     </div>
@@ -39,11 +33,20 @@ export default function WidgetPanel() {
   return (
     <Collapse defaultActiveKey={[1, 2, 3]}>
       <Panel key={1} header="布局 Layout">
-        <ContainerWidget />
-        <ContainerWidget />
-        <ContainerWidget />
+        <div className={styles.containerBox}>
+          <ContainerWidget />
+          <ContainerWidget />
+          <ContainerWidget />
+        </div>
       </Panel>
-      <Panel key={2} header="内容 Content"></Panel>
+      <Panel key={2} header="内容 Content">
+        <div className={styles.blockBox}>
+          <BasicWidget />
+          <BasicWidget />
+          <BasicWidget />
+          <BasicWidget />
+        </div>
+      </Panel>
       <Panel key={3} header="自定义 Custom">
         <div>真棒</div>
       </Panel>
