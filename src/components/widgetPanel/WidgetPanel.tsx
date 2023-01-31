@@ -1,50 +1,65 @@
 import { Collapse } from 'antd'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './WidgetPanel.module.scss'
+import type { BasicWidget, Designer, Widget } from '@/types/editor'
+import { basicWidget, containers } from '@/components/widgetPanel/widgetConfig'
 
 const { Panel } = Collapse
 
-function BasicWidget() {
+interface BasicItemProps {
+  block: BasicWidget
+}
+
+function BasicItem({ block }: BasicItemProps) {
   return (
     <div className={styles.blockItem}>
       <div className={styles.blockItemContainer}>
-        <span className="bloc-title"> BasicWidget </span>
+        <span className="bloc-title">{block.type}</span>
       </div>
     </div>
   )
 }
 
-function ContainerWidget() {
+interface ContainerWidgetProps {
+  layout: Widget
+}
+
+function ContainerWidget({ layout }: ContainerWidgetProps) {
+  const colItems = layout.widgetList.map((col, colI) =>
+    <div className={styles.col} key={colI}>{colI}</div>,
+  )
+
   return (
     <div className={styles.layoutItem}>
       <div className={styles.layoutLabel}>
-        11 列 columns
+        {layout.widgetList.length} 列 columns
       </div>
       <div className={styles.layoutItemContainer}>
-        <div className={styles.layoutItemContent}>
-          <div className={styles.col}>111</div>
-        </div>
+        <div className={styles.layoutItemContent}>{colItems}</div>
       </div>
     </div>
   )
 }
 
-export default function WidgetPanel() {
+interface WidgetPanelProps {
+  designer: Designer
+}
+
+export default function WidgetPanel({ designer }: WidgetPanelProps) {
+  const [layouts] = useState<Widget[]>(containers)
+  const [basics] = useState<BasicWidget[]>(basicWidget)
   return (
     <Collapse defaultActiveKey={[1, 2, 3]}>
       <Panel key={1} header="布局 Layout">
         <div className={styles.containerBox}>
-          <ContainerWidget />
-          <ContainerWidget />
-          <ContainerWidget />
+          {layouts.map((layout, i) =>
+            <ContainerWidget key={i} layout={layout} />,
+          )}
         </div>
       </Panel>
       <Panel key={2} header="内容 Content">
         <div className={styles.blockBox}>
-          <BasicWidget />
-          <BasicWidget />
-          <BasicWidget />
-          <BasicWidget />
+          {basics.map(widget => <BasicItem key={widget.id} block={widget} />)}
         </div>
       </Panel>
       <Panel key={3} header="自定义 Custom">
