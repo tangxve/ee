@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button, Layout, Space, Typography } from 'antd'
-import WidgetPanel from '../components/WidgetPanel'
+import WidgetPanel from '../components/widgetPanel/WidgetPanel'
+import EmailPanel from '../components/emailPanel/EmailPanel'
+import DesignPanel from '../components/designPanel/DesignPanel'
 
 const { Header, Sider, Content } = Layout
 const { Title } = Typography
@@ -23,11 +25,15 @@ export default function Editor() {
           </Space>
         </Header>
         <Layout>
-          <Sider width="302" className='bg-white'>
+          <Sider width="302" className="bg-white">
             <WidgetPanel />
           </Sider>
-          <Content>Content</Content>
-          <Sider width="302">Sider</Sider>
+          <Content>
+            <EmailPanel />
+          </Content>
+          <Sider width="302">
+            <DesignPanel />
+          </Sider>
         </Layout>
       </Layout>
     </div>
