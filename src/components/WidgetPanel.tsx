@@ -1,4 +1,5 @@
 import { Collapse } from 'antd'
+import React from 'react'
 
 const { Panel } = Collapse
 
@@ -10,6 +11,13 @@ export function BasicWidget() {
     </div>
   )
 }
+
+// const containerStyle: React.CSSProperties = {
+//   boxShadow: 'rgb(55 63 71 / 4%) 0px 0px 0px 1px, rgb(55 63 71 / 8%) 0px 4px 4px 0px, rgb(55 63 71 / 8%) 0px 8px 24px 0px',
+//   hover: {
+//     boxShadow: '0px 0px 2px 2px rgb(123, 192, 252)',
+//   },
+// }
 
 export function ContainerWidget() {
   const colItems = [1, 2, 3, 4].map(v =>
