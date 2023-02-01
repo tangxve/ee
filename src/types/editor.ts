@@ -65,3 +65,9 @@ export interface Designer {
 
   clearSelected(): void
 }
+
+export interface ContainerProps {
+  widget: Widget
+  designer: Designer
+  parentWidget?: Widget
+}

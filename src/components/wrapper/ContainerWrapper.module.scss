@@ -1,0 +1,39 @@
+.ContainerWrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  .containerContent {
+    position: relative;
+  }
+
+  .isSelected {
+    position: relative;
+    z-index: 10; /* 解决 outline 被覆盖 */
+    outline: 2px solid #409EFF;
+  }
+
+  .containerAction {
+    position: absolute;
+    z-index: 20;
+    top: -30px;
+    left: -2px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 30px;
+    padding: 4px 8px;
+    background-color: $--color-selected;
+    color: #fff;
+
+    .actionItem {
+      cursor: pointer;
+      display: flex;
+      align-content: center;
+    }
+
+    .actionItem + .actionItem {
+      margin-left: 6px;
+    }
+  }
+}

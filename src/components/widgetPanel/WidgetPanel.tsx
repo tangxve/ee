@@ -22,15 +22,16 @@ function BasicItem({ block }: BasicItemProps) {
 
 interface ContainerWidgetProps {
   layout: Widget
+  onAddContainerByDbClick: (layout: Widget) => void
 }
 
-function ContainerWidget({ layout }: ContainerWidgetProps) {
+function ContainerWidget({ layout, onAddContainerByDbClick }: ContainerWidgetProps) {
   const colItems = layout.widgetList.map((col, colI) =>
     <div className={styles.col} key={colI}>{colI}</div>,
   )
 
   return (
-    <div className={styles.layoutItem}>
+    <div className={styles.layoutItem} onDoubleClick={() => onAddContainerByDbClick(layout)}>
       <div className={styles.layoutLabel}>
         {layout.widgetList.length} 列 columns
       </div>
@@ -48,12 +49,19 @@ interface WidgetPanelProps {
 export default function WidgetPanel({ designer }: WidgetPanelProps) {
   const [layouts] = useState<Widget[]>(containers)
   const [basics] = useState<BasicWidget[]>(basicWidget)
+
+  function addContainerByDbClick(layout: Widget) {
+    designer.addContainerByDbClick(layout)
+
+    console.log('designer', designer)
+  }
+
   return (
     <Collapse defaultActiveKey={[1, 2, 3]}>
       <Panel key={1} header="布局 Layout">
         <div className={styles.containerBox}>
           {layouts.map((layout, i) =>
-            <ContainerWidget key={i} layout={layout} />,
+            <ContainerWidget onAddContainerByDbClick={addContainerByDbClick} key={i} layout={layout} />,
           )}
         </div>
       </Panel>

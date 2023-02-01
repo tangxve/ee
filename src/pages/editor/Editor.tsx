@@ -35,7 +35,7 @@ export default function Editor() {
             <WidgetPanel designer={designer} />
           </Sider>
           <Content>
-            <EmailPanel />
+            <EmailPanel designer={designer} />
           </Content>
           <Sider width="302">
             <DesignPanel />
