@@ -9,7 +9,7 @@ export default function EmailPanel() {
   return (
     <div className={styles.EmailContent}>
       {widgetList.map(widget =>
-        <SectionContainer key={widget.id} widget={widget} >
+        <SectionContainer key={widget.id} widget={widget}>
           {widget.widgetList.map(colWidget =>
             <ColumnContainer key={colWidget.key} widget={colWidget} parentWidget={widget} >
               {colWidget.key}

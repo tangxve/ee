@@ -52,14 +52,18 @@ export interface Designer {
   selectedId: string | null
   selectedWidget: Widget | null
   selectedWidgetName: string | null
+  selectedParentId: string | null
+  selectedParentWidget: Widget | null
+  selectedParentWidgetName: string | null
   widgetList: Array<Widget>
 
   initDesigner(): void
 
   addContainerByDbClick(container: Widget): void
+  setWidgetList(newList: Widget[]): void
   addBasicByDbClick(basic: BasicWidget): void
 
-  setSelected(selected?: Widget): void
+  setSelected(selected?: Widget, selectedParent?: Widget): void
 
   removeSelected(widget: Widget, parentWidget?: Widget): void
 

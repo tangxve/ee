@@ -9,9 +9,13 @@ interface ContainerWrapperProps extends ContainerProps {
   children: ReactNode
 }
 
-export default function ContainerWrapper({ children, widget }: ContainerWrapperProps) {
+export default function ContainerWrapper({ children, widget, parentWidget }: ContainerWrapperProps) {
   const setSelected = useStore(state => state.setSelected)
+  const setWidgetList = useStore(state => state.setWidgetList)
+  const widgetList = useStore(state => state.widgetList)
   const selectedId = useStore(state => state.selectedId)
+  const selectedWidget = useStore(state => state.selectedWidget)
+  const selectedParentWidget = useStore(state => state.selectedParentWidget)
 
   const [isSelected, setIsSelected] = useState<boolean>(false)
 
@@ -21,7 +25,26 @@ export default function ContainerWrapper({ children, widget }: ContainerWrapperP
 
   const selectWidget = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation()
-    setSelected(widget)
+    setSelected(widget, parentWidget)
+  }
+
+  const removeWidget = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation()
+
+    console.log('selectedWidget', selectedWidget)
+
+    console.log('selectedParentWidget', selectedParentWidget)
+
+    const widgetIndex = selectedParentWidget?.widgetList
+      .findIndex(p => p.id === selectedWidget?.id)
+
+    selectedParentWidget?.widgetList.splice(widgetIndex!, 1)
+
+    console.log('selectedParentWidget', selectedParentWidget)
+
+    console.log('widgetList', widgetList)
+
+    setWidgetList(widgetList)
   }
 
   function Selected() {
@@ -31,7 +54,9 @@ export default function ContainerWrapper({ children, widget }: ContainerWrapperP
     return (
       <div className={styles.containerAction}>
         <div className={`${styles.actionItem}`}>{widget.type}</div>
-        <div className={`${styles.actionItem} widget-remove`}>
+        <div role="presentation"
+             onClick={e => removeWidget(e)}
+             className={`${styles.actionItem} widget-remove`}>
           <DeleteOutlined />
         </div>
       </div>

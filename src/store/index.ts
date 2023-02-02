@@ -7,6 +7,9 @@ const useStore = create<Designer>((setState, getState) => ({
   selectedId: null,
   selectedWidget: null,
   selectedWidgetName: null,
+  selectedParentId: null,
+  selectedParentWidget: null,
+  selectedParentWidgetName: null,
   widgetList: [],
   initDesigner: () => {
     setState((state) => {
@@ -16,14 +19,20 @@ const useStore = create<Designer>((setState, getState) => ({
       }
     })
   },
+  setWidgetList(newList) {
+    setState(() => ({
+      widgetList: newList,
+    }))
+  },
   addContainerByDbClick(container) {
     setState((state) => ({
       widgetList: [...state.widgetList, container],
     }))
   },
-  setSelected(selected) {
+  setSelected(selected, selectedParent) {
     if (!selected) {
-      getState().clearSelected()
+      getState()
+        .clearSelected()
       return
     }
 
@@ -36,6 +45,14 @@ const useStore = create<Designer>((setState, getState) => ({
       selectedWidget: selected,
       selectedWidgetName: selected.type,
     }))
+
+    if (selectedParent) {
+      setState(() => ({
+        selectedParentId: selectedParent.id,
+        selectedParentWidget: selectedParent,
+        selectedParentWidgetName: selectedParent.type,
+      }))
+    }
   },
   removeSelected(widget, parentWidget) {
     console.log('parentWidget', parentWidget)
