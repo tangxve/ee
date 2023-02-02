@@ -1,11 +1,11 @@
 .SectionContainer {
   width: 100%;
+}
 
-  .sectionContent {
-    display: flex;
-    padding: 20px;
-    background-color: #51d6a9;
-  }
+.sectionContent {
+  display: flex;
+  padding: 20px;
+  background-color: #51d6a9;
 }
 
 .SectionContainer + .SectionContainer {
@@ -16,8 +16,8 @@
 .ColumnContainer {
   flex: 1;
 
-  .columnContent {
-    background: antiquewhite;
-    padding: 10px;
-  }
+}
+.columnContent {
+  background: antiquewhite;
+  padding: 10px;
 }
