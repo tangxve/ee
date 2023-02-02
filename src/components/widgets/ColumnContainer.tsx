@@ -6,14 +6,17 @@ import type { ContainerProps } from '@/types/editor'
 interface ColumnContainerProps extends ContainerProps {
   children: ReactNode
 }
+
 export default function ColumnContainer(
   { children, ...props }: ColumnContainerProps,
 ) {
   return (
-  <div className={styles.ColumnContainer}>
-    <ContainerWrapper {...props}>
-      {children}
-    </ContainerWrapper>
-  </div>
+    <div className={styles.ColumnContainer}>
+      <ContainerWrapper {...props}>
+        <div className={styles.columnContent}>
+          {children}
+        </div>
+      </ContainerWrapper>
+    </div>
   )
 }

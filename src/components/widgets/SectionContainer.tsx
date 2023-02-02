@@ -13,8 +13,9 @@ export default function SectionContainer(
   return (
     <div className={styles.SectionContainer}>
       <ContainerWrapper {...props}>
-        <div className={styles.sectionContent}></div>
-        {children}
+        <div className={styles.sectionContent}>
+          {children}
+        </div>
       </ContainerWrapper>
     </div>
   )

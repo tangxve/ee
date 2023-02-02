@@ -1,8 +1,9 @@
 import { Collapse } from 'antd'
 import React, { useState } from 'react'
 import styles from './WidgetPanel.module.scss'
-import type { BasicWidget, Designer, Widget } from '@/types/editor'
+import type { BasicWidget, Widget } from '@/types/editor'
 import { basicWidget, containers } from '@/components/widgetPanel/widgetConfig'
+import useStore from '@/store'
 
 const { Panel } = Collapse
 
@@ -22,16 +23,17 @@ function BasicItem({ block }: BasicItemProps) {
 
 interface ContainerWidgetProps {
   layout: Widget
-  onAddContainerByDbClick: (layout: Widget) => void
 }
 
-function ContainerWidget({ layout, onAddContainerByDbClick }: ContainerWidgetProps) {
+function ContainerWidget({ layout }: ContainerWidgetProps) {
+  const addContainerByDbClick = useStore(state => state.addContainerByDbClick)
+
   const colItems = layout.widgetList.map((col, colI) =>
     <div className={styles.col} key={colI}>{colI}</div>,
   )
 
   return (
-    <div className={styles.layoutItem} onDoubleClick={() => onAddContainerByDbClick(layout)}>
+    <div className={styles.layoutItem} onDoubleClick={() => addContainerByDbClick(layout)}>
       <div className={styles.layoutLabel}>
         {layout.widgetList.length} 列 columns
       </div>
@@ -42,32 +44,24 @@ function ContainerWidget({ layout, onAddContainerByDbClick }: ContainerWidgetPro
   )
 }
 
-interface WidgetPanelProps {
-  designer: Designer
-}
-
-export default function WidgetPanel({ designer }: WidgetPanelProps) {
+export default function WidgetPanel() {
   const [layouts] = useState<Widget[]>(containers)
   const [basics] = useState<BasicWidget[]>(basicWidget)
-
-  function addContainerByDbClick(layout: Widget) {
-    designer.addContainerByDbClick(layout)
-
-    console.log('designer', designer)
-  }
 
   return (
     <Collapse defaultActiveKey={[1, 2, 3]}>
       <Panel key={1} header="布局 Layout">
         <div className={styles.containerBox}>
           {layouts.map((layout, i) =>
-            <ContainerWidget onAddContainerByDbClick={addContainerByDbClick} key={i} layout={layout} />,
+            <ContainerWidget key={i} layout={layout} />,
           )}
         </div>
       </Panel>
       <Panel key={2} header="内容 Content">
         <div className={styles.blockBox}>
-          {basics.map(widget => <BasicItem key={widget.id} block={widget} />)}
+          {basics.map(widget =>
+            <BasicItem key={widget.id} block={widget} />,
+          )}
         </div>
       </Panel>
       <Panel key={3} header="自定义 Custom">

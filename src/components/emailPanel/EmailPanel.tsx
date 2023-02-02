@@ -1,21 +1,17 @@
 import styles from './EmailPanel.module.scss'
-import type { Designer } from '@/types/editor'
 import SectionContainer from '@/components/widgets/SectionContainer'
 import ContainerWrapper from '@/components/wrapper/ContainerWrapper'
+import useStore from '@/store'
 
-interface EmailPanelProps {
-  designer: Designer
-}
-export default function EmailPanel({ designer }: EmailPanelProps) {
-  const { widgetList } = designer
-  console.log('widgetList', widgetList)
+export default function EmailPanel() {
+  const widgetList = useStore(state => state.widgetList)
 
   return (
     <div className={styles.EmailContent}>
       {widgetList.map(widget =>
-        <SectionContainer key={widget.key} widget={widget} designer={designer} >
+        <SectionContainer key={widget.id} widget={widget} >
           {widget.widgetList.map(colWidget =>
-            <ContainerWrapper key={colWidget.key} widget={colWidget} designer={designer} parentWidget={widget} >
+            <ContainerWrapper key={colWidget.key} widget={colWidget} parentWidget={widget} >
               {colWidget.key}
             </ContainerWrapper>,
           )}

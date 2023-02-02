@@ -1,19 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Layout, Space, Typography } from 'antd'
 import WidgetPanel from '@/components/widgetPanel/WidgetPanel'
 import EmailPanel from '@/components/emailPanel/EmailPanel'
 import DesignPanel from '@/components/designPanel/DesignPanel'
-import { createDesigner } from '@/pages/editor/designer'
-import type { Designer } from '@/types/editor'
 
 const { Header, Sider, Content } = Layout
 const { Title } = Typography
 
 export default function Editor() {
-  const [designer, setDesigner] = useState<Designer>(createDesigner())
-
-  console.log('designer', designer)
-
   return (
     <div className="h-screen">
       <Layout className="h-screen">
@@ -32,10 +26,10 @@ export default function Editor() {
         </Header>
         <Layout>
           <Sider width="302" className="bg-white">
-            <WidgetPanel designer={designer} />
+            <WidgetPanel/>
           </Sider>
           <Content>
-            <EmailPanel designer={designer} />
+            <EmailPanel/>
           </Content>
           <Sider width="302">
             <DesignPanel />

@@ -1,5 +1,5 @@
 import type { BasicWidget, Designer } from '@/types/editor'
-import { getDefaultConfig } from '@/pages/editor/emailConfig'
+import { getDefaultConfig } from '@/store/emailConfig'
 
 export function createDesigner(): Designer {
   const defaultConfig = getDefaultConfig()
@@ -42,8 +42,6 @@ export function createDesigner(): Designer {
       this.selectedWidget = null
       this.selectedWidgetName = null
     },
-
-    addBasicByDbClick(basic: BasicWidget) {
-    },
+    addBasicByDbClick(basic: BasicWidget) {},
   }
 }

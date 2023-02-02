@@ -68,6 +68,6 @@ export interface Designer {
 
 export interface ContainerProps {
   widget: Widget
-  designer: Designer
+  // designer: Designer
   parentWidget?: Widget
 }
