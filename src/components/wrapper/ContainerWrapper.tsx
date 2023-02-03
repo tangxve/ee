@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import React, { useEffect, useState } from 'react'
 import { DeleteOutlined } from '@ant-design/icons'
+import { shallow } from 'zustand/shallow'
 import styles from './ContainerWrapper.module.scss'
 import type { ContainerProps } from '@/types/editor'
 import useStore from '@/store'
@@ -11,11 +12,15 @@ interface ContainerWrapperProps extends ContainerProps {
 
 export default function ContainerWrapper({ children, widget, parentWidget }: ContainerWrapperProps) {
   const setSelected = useStore(state => state.setSelected)
-  const setWidgetList = useStore(state => state.setWidgetList)
-  const widgetList = useStore(state => state.widgetList)
   const selectedId = useStore(state => state.selectedId)
-  const selectedWidget = useStore(state => state.selectedWidget)
-  const selectedParentWidget = useStore(state => state.selectedParentWidget)
+  const [
+    selectedWidget,
+    selectedParentWidget,
+  ] = useStore(state =>
+    [
+      state.selectedWidget,
+      state.selectedParentWidget,
+    ], shallow)
 
   const [isSelected, setIsSelected] = useState<boolean>(false)
 
@@ -36,7 +41,7 @@ export default function ContainerWrapper({ children, widget, parentWidget }: Con
 
     selectedParentWidget?.widgetList.splice(widgetIndex!, 1)
 
-    setWidgetList(widgetList)
+    useStore.setState((state) => ({ widgetList: [...state.widgetList] }))
   }
 
   function Selected() {
