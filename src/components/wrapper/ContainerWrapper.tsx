@@ -31,18 +31,10 @@ export default function ContainerWrapper({ children, widget, parentWidget }: Con
   const removeWidget = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation()
 
-    console.log('selectedWidget', selectedWidget)
-
-    console.log('selectedParentWidget', selectedParentWidget)
-
     const widgetIndex = selectedParentWidget?.widgetList
       .findIndex(p => p.id === selectedWidget?.id)
 
     selectedParentWidget?.widgetList.splice(widgetIndex!, 1)
-
-    console.log('selectedParentWidget', selectedParentWidget)
-
-    console.log('widgetList', widgetList)
 
     setWidgetList(widgetList)
   }

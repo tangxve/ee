@@ -20,9 +20,11 @@ const useStore = create<Designer>((setState, getState) => ({
     })
   },
   setWidgetList(newList) {
-    setState(() => ({
-      widgetList: newList,
-    }))
+    setState((state) => {
+      return {
+        widgetList: [...newList],
+      }
+    })
   },
   addContainerByDbClick(container) {
     setState((state) => ({
