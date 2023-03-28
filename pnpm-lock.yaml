@@ -18,6 +18,7 @@ specifiers:
   eslint-plugin-react: ^7.32.1
   eslint-plugin-simple-import-sort: ^9.0.0
   lodash-es: ^4.17.21
+  mjml-browser: ^4.13.0
   postcss: ^8.4.21
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -26,6 +27,7 @@ specifiers:
   tailwindcss: 3.1.8
   typescript: ^4.9.3
   vite: ^4.0.0
+  vue: 2.6.12
   zustand: ^4.3.2
 
 dependencies:
@@ -34,6 +36,7 @@ dependencies:
   lodash-es: 4.17.21
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  vue: 2.6.12
   zustand: 4.3.2_react@18.2.0
 
 devDependencies:
@@ -51,6 +54,7 @@ devDependencies:
   eslint-plugin-jsx-a11y: 6.7.1_eslint@8.33.0
   eslint-plugin-react: 7.32.2_eslint@8.33.0
   eslint-plugin-simple-import-sort: 9.0.0_eslint@8.33.0
+  mjml-browser: 4.13.0
   postcss: 8.4.21
   react-router-dom: 6.8.0_biqbaboplfbrettd7655fr4n2y
   sass: 1.57.1
@@ -2708,6 +2712,10 @@ packages:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
     dev: true
 
+  /mjml-browser/4.13.0:
+    resolution: {integrity: sha512-ZlQNcw7sBzA36gjBM9In5v+85cXb+LFrC4QdTZq6pjCKyF/in1KmVM9PoYbBDl/HqwFbFC9uEv+HiAY6ZmfMxw==}
+    dev: true
+
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
@@ -4159,6 +4167,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue/2.6.12:
+    resolution: {integrity: sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==}
+    dev: false
 
   /which-boxed-primitive/1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}

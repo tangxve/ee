@@ -1,5 +1,6 @@
 import { generateId } from '@/utils/util'
 import type { BaseBlock, BaseLayout, MjmlNode } from '@/types/editor'
+import { BasicType } from '@/types/BasicBlock'
 
 export const baseBlocks: BaseBlock[] = [
   {
@@ -76,9 +77,24 @@ export const userSchemaBase: MjmlNode[] = [
   },
 ]
 
+export interface PageDefault {
+  layoutType: 'PC' | 'Mobile'
+  name: string
+  type: string
+  pageAttribute: any
+  widgetList: any[]
+  historyData: {
+    index: number
+    maxStep: number
+    steps: any[]
+  }
+}
+
 // 全局默认配置
-export function getDefaultConfig() {
+export function getDefaultConfig(): PageDefault {
   return {
+    type: 'Page',
+    name: BasicType.PAGE,
     layoutType: 'PC',
     pageAttribute: {},
     widgetList: [],
