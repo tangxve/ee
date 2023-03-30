@@ -1,29 +1,21 @@
 import { useMemo } from 'react'
+import mjmlBrowser from 'mjml-browser'
 import useStore from '@/store'
 import jsonToMjml from '@/utils/jsonToMjml'
 
 export default function MjmlDomRender() {
-  const widgetList = useStore(state => state.widgetList)
-  // const initDesigner = useStore(state => state.initDesigner)
-  // const addContainerByDbClick = useStore(state => state.addContainerByDbClick)
+  const pageDefault = useStore(state => state.defaultConfig)
 
-  // console.log(initDesigner())
+  // pageDefault ==> json ==> mjml ==> html ==> react
 
-  // console.log(addContainerByDbClick())
-
-  console.log('widgetList', widgetList)
-
-  // widgetList ==> json ==> mjml ==> html ==> react
   const html = useMemo(() => {
     if (!pageDefault)
       return ''
 
     const mjmlString = jsonToMjml({ data: pageDefault })
 
-    return mjmlString
-
-    // return mjmlBrowser(mjmlString).html
-  }, [widgetList])
+    return mjmlBrowser(mjmlString).html
+  }, [pageDefault])
 
   console.log('html', html)
 

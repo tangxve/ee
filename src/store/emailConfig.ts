@@ -93,7 +93,7 @@ export interface PageDefault {
 // 全局默认配置
 export function getDefaultConfig(): PageDefault {
   return {
-    type: 'Page',
+    type: BasicType.PAGE,
     name: BasicType.PAGE,
     layoutType: 'PC',
     pageAttribute: {},

@@ -3,7 +3,7 @@ import { getDefaultConfig } from '@/store/emailConfig'
 import type { BasicWidget, Designer } from '@/types/editor'
 
 const useStore = create<Designer>((setState, getState) => ({
-  defaultConfig: {},
+  defaultConfig: getDefaultConfig(),
   selectedId: null,
   selectedWidget: null,
   selectedWidgetName: null,

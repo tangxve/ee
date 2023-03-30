@@ -6,6 +6,7 @@ export default class BlockManager {
   }
 
   getBlockByType(type: string) {
+    console.log('type', type)
     return this.blocksMap[type]
   }
 }
