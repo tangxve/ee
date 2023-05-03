@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import mjmlBrowser from 'mjml-browser'
+import { unescape } from 'lodash-es'
 import useStore from '@/store'
 import jsonToMjml from '@/utils/jsonToMjml'
 
@@ -14,12 +15,13 @@ export default function MjmlDomRender() {
 
     const mjmlString = jsonToMjml({ data: pageDefault })
 
-    return mjmlBrowser(mjmlString).html
+    const h = mjmlBrowser(unescape(mjmlString)).html
+
+    return h
   }, [pageDefault])
-
-  console.log('html', html)
-
-  return (
-    <div>MjmlDomRender</div>
-  )
+  return useMemo(() => {
+    return (
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+    )
+  }, [html])
 }

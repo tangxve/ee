@@ -14,7 +14,7 @@ export default function JsonToMjml(options: JsonToMjmlOption): string {
 
   const mjmlString = unescape(renderToStaticMarkup(block.render()))
 
-  console.log('mjmlString', mjmlString)
+  // console.log('mjmlString', mjmlString)
 
-  return ''
+  return mjmlString
 }
