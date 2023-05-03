@@ -15,10 +15,9 @@ export default function MjmlDomRender() {
 
     const mjmlString = jsonToMjml({ data: pageDefault })
 
-    const h = mjmlBrowser(unescape(mjmlString)).html
-
-    return h
+    return mjmlBrowser(unescape(mjmlString)).html
   }, [pageDefault])
+
   return useMemo(() => {
     return (
       <div dangerouslySetInnerHTML={{ __html: html }} />
